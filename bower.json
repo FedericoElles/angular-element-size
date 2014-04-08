@@ -1,0 +1,18 @@
+{
+  "name": "angular-element-size",
+  "version": "0.1",
+  "homepage": "https://github.com/FedericoElles/angular-element-size",
+  "authors": [
+    "FedericoElles"
+  ],
+  "description": "Allows an Angular Scope to get to know properties of the related html element",
+  "main": "angular-element-size.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
