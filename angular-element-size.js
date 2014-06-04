@@ -60,5 +60,41 @@ angular.module('angularElementSize', [])
   }
 })
 
+/**
+ *  Example:
+ *  ng-has-scrollbar="sidebar-container-search"
+ *  ng-class="{'no-scroll': !hasScrollbar}"
+ * 
+ */
+.directive('ngHasScrollbar', function ($window) {
+  return{
+    scope:true,
+    priority: 0,
+    link: function (scope, element, attrs) {
+      var tag = element[0],
+          altTag;
+      
+      //use alternative tag if value passed
+      if (attrs.ngHasScrollbar){
+        altTag = document.getElementById(attrs.ngHasScrollbar);
+        if (altTag){
+          tag = altTag;
+        }
+      }
+      
+      scope.$watch(function(newVal){
+          return tag.scrollHeight > tag.clientHeight; 
+        }, function(newValue, oldValue) {
+        console.log('ngHasScrollbar', newValue, tag);
+        if (newValue === true || newValue === false){
+          scope.hasScrollbar = newValue;
+          //console.log('ngHasScrollbar: true');
+        }
+      });
+    }
+  }
+})
+
+
 
 ;
