@@ -14,10 +14,9 @@ angular.module('angularElementSize', [])
 .factory('windowSize',function($window, $timeout){
   var common = {};
   // screen height
-  var w = angular.element($window);
-  common.innerHeight = w[0].innerHeight;
-  w.bind('resize', function () {
-    common.innerHeight = w[0].innerHeight;
+  common.innerHeight =$window.innerHeight;
+  angular.element($window).bind('resize', function () {
+    common.innerHeight = $window.innerHeight;
   });
   return common;
 })
