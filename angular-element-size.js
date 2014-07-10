@@ -84,7 +84,7 @@ angular.module('angularElementSize', [])
       scope.$watch(function(newVal){
           return tag.scrollHeight > tag.clientHeight; 
         }, function(newValue, oldValue) {
-        console.log('ngHasScrollbar', newValue, tag);
+        //console.log('ngHasScrollbar', newValue, tag);
         if (newValue === true || newValue === false){
           scope.hasScrollbar = newValue;
           //console.log('ngHasScrollbar: true');
