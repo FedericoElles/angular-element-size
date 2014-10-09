@@ -54,6 +54,21 @@ angular.module('angularElementSize', [])
       angular.element($window).bind('resize', function () {
         _update();
       });
+
+      //if the element is invisible, the position is 0
+      //detect once the element is visible again via height
+      //attribute being set, but only once for performance
+      if (window.getComputedStyle(element[0]).height === 'auto'){
+        var unwatch = scope.$watch(function(){
+          return window.getComputedStyle(element[0]).height;
+        }, function(newval, oldval){
+          if (newval !== 'auto' && oldval === 'auto'){
+            _update();
+            unwatch();
+          }
+        });
+      }
+      
       _update();
     }
   }
